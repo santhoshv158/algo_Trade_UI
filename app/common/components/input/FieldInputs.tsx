@@ -1,0 +1,51 @@
+"use client";
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import TextField, { OutlinedTextFieldProps } from "@mui/material/TextField";
+
+export interface InputTextFieldProps
+  extends Omit<OutlinedTextFieldProps, "variant" | "onChange"> {
+  width?: number | string;
+  variant?: "outlined" | "filled" | "standard";
+  required?: boolean; 
+  onValueChange?: (value: string) => void; 
+}
+
+const InputTextField: React.FC<InputTextFieldProps> = ({
+  label = "Enter text",
+  width = 500,
+  fullWidth = true,
+  variant = "outlined",
+  value = "",
+  required = false,
+  onValueChange,
+  error,
+  helperText,
+  ...props
+}) => {
+  const [touched, setTouched] = useState(false);
+
+  const showError =
+    (required && touched && !value) || (!!error && touched);
+
+  const displayHelperText =
+    showError && !helperText ? `${label} is required` : helperText;
+
+  return (
+    <Box sx={{ width, maxWidth: "100%" }}>
+      <TextField
+        {...props}
+        fullWidth={fullWidth}
+        label={label}
+        variant={variant}
+        value={value}
+        onChange={(e) => onValueChange?.(e.target.value)}
+        onBlur={() => setTouched(true)}
+        error={showError}
+        helperText={showError ? displayHelperText : ""}
+      />
+    </Box>
+  );
+};
+
+export default InputTextField;
