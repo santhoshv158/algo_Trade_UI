@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Chat from "./login/compontes/chat";
+import Chat from "./login/compontes/loginInput";
 import Button from "@/app/common/components/Button";
 import LoginPage from "./login/page";
 
