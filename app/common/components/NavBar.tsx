@@ -65,14 +65,14 @@ const Navbar: React.FC<NavbarProps> = ({
 
         {/* Logo & Brand */}
         <div className="flex items-center space-x-2">
-          <Image
+          {/* <Image
             src="/images/mak2.png"
             alt="MAK Trading Logo"
             width={50}
             height={50}
             className="object-contain"
             priority
-          />
+          /> */}
           <span className="text-2xl font-bold tracking-tight">
             <span className="text-orange-500">MAK</span>{" "}
             <span className="text-gray-700 dark:text-gray-200">Trading</span>
